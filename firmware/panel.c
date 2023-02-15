@@ -939,6 +939,11 @@ static uint8_t BuildReport(uint8_t id)
 		return ReportMouse();
 	#endif
 
+	#if (USE_LED != 0)
+	case ID_Led:
+		return ReportLed();
+	#endif
+
 	default:
 		break;
 	}

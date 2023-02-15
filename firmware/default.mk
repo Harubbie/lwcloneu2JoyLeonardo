@@ -92,6 +92,7 @@ DEBUG = dwarf-2
 #     For a directory that has spaces, enclose it in quotes.
 EXTRAINCDIRS = 
 
+ENCODER_ENABLE = yes
 
 # Compiler flag to set the C Standard level.
 #     c89   = "ANSI" C
@@ -198,10 +199,10 @@ LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB)
 # Type: avrdude -c ?
 # to get a full listing.
 #
-AVRDUDE_PROGRAMMER = stk500
+AVRDUDE_PROGRAMMER = avr109
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
-AVRDUDE_PORT = com3
+AVRDUDE_PORT = com8
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep

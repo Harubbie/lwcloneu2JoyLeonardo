@@ -24,13 +24,13 @@
 
 #define ENABLE_LED_DEVICE
 
-#define ENABLE_PROFILING
 #define ENABLE_PANEL_DEVICE
-#define ENABLE_ANALOG_INPUT
-#define NUM_JOYSTICKS 1
+#define NUM_JOYSTICKS 2
 #define USE_MOUSE 0
 #define USE_CONSUMER 1
-#define USE_KEYBOARD 0
+#define USE_KEYBOARD 1
+
+
 
 #endif
 

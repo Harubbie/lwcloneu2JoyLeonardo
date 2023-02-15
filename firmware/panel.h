@@ -39,6 +39,7 @@ enum ReportIds
 	ID_Joystick4,
 	ID_AccelGyro,
 	ID_Mouse,
+	ID_Led,
 };
 
 static const uint16_t DELTA_TIME_PANEL_REPORT_MS = 2;

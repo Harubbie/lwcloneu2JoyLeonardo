@@ -17,6 +17,9 @@
 #ifndef HWCONFIG_H__INCLUDED
 #define HWCONFIG_H__INCLUDED
 
+#include <stdint.h>
+#include <avr/io.h>
+
 #if (F_CPU != 16000000)
 #error "invalid CPU clock frequency ==> should be 16 MHZ"
 #endif
@@ -56,6 +59,33 @@ static void inline led_timer_init(void)
 
 #if defined(ENABLE_PANEL_DEVICE)
 #define PANEL_TASK
+#endif
+
+/****************************************
+ ADC config
+****************************************/
+
+#if defined(ENABLE_ANALOG_INPUT)
+
+static void inline ADC_init(void)
+{
+	ADMUX = (1 << REFS0); // VCC with external capacitor on ARef pin
+
+	ADCSRA =
+		(1 << ADEN) | //enable //to change all of this gabbie
+		(1 << ADSC) | //start conversion(s)
+		(1 << ADIE) | // interrupt enable
+		(1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // prescaler 128x
+}
+
+static void inline ADC_setmux(uint8_t mux)
+{
+	ADMUX &= ~0x1F;
+	ADMUX |= mux & 0x1F;
+	ADCSRB &= ~(1 << MUX5);
+	ADCSRB |= (((mux >> 5) & 0x01) << MUX5);
+}
+
 #endif
 
 
